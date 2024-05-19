@@ -7,9 +7,8 @@ const user = process.env.USER;
 const pass = process.env.PASS;
 const database = process.env.DB;
 const host = process.env.HOST;
-const portDB = process.env.PORT_DB;
 
-const cnstr = `postgresql://${user}:${pass}@${host}:${portDB}/${database}`;
+const cnstr = `postgresql://${user}:${pass}@${host}:5432/${database}`;
 const db = pgp(cnstr);
 
 db.connect()

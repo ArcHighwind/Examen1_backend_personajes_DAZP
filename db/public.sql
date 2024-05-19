@@ -40,12 +40,22 @@ ON tbl_personaje.id_power = tbl_power.id
 INNER JOIN tbl_class
 ON tbl_personaje.id_class = tbl_class.id
 INNER JOIN tbl_weapon
-ON tbl-personaje.id_weapon = tbl_weapon.id
+ON tbl_personaje.id_weapon = tbl_weapon.id
 INNER JOIN tbl_personalinfo
 ON tbl_personaje.id_info = tbl_personalinfo.id; 
 
 
-INSERT INTO tbl_power
-(power_name)
-VALUES
-($1) returning *;
+INSERT INTO tbl_power (power_name)
+VALUES ('regeneration');
+
+INSERT INTO tbl_class (class_name)
+VALUES ('warrior');
+
+INSERT INTO tbl_weapon (weapon_type)
+VALUES ('guns');
+
+INSERT INTO tbl_personalinfo (personalinfo)
+VALUES ('A supersoldier with increased metabolic regeneration');
+
+INSERT INTO tbl_personaje (pname, p_age)
+VALUES ('Winter Soldier', 32);
