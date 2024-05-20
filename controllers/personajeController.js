@@ -22,7 +22,9 @@ const postPersonaje = async (req, res) => {
                 values
                 ($1, $2, $3, $4, $5, $6) returning *`
     const result = await db.query(sql, params);
-    res.json(result);
+//    res.json(result);
+    
+    return res.json({message: "Successfully Added", object_created: result})
 }
 
 export { getPersonaje, postPersonaje }
