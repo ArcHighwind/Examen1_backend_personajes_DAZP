@@ -52,7 +52,12 @@ create Table tbl_user
     first_name varchar(255),
     last_name varchar(255),
     email varchar(100),
-    user_passord varchar(30),
+    user_password varchar(30),
     creation_date Timestamp default current_timestamp,
     active_user bool default true
 )
+
+SELECT * FROM tbl_user;
+
+ALTER Table tbl_user
+RENAME COLUMN user_passord TO user_password;

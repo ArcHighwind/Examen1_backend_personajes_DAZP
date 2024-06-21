@@ -9,10 +9,10 @@ const createUser = async (req,res) =>{
                 first_name,
                 last_name,
                 email,
-                user_passord } = req.body;
+                user_password } = req.body;
     
         const sql = `insert into tbl_user
-                    (username, first_name, last_name, email, user_passord)
+                    (username, first_name, last_name, email, user_password)
                     values
                     ($1, $2, $3, $4, $5)
                     returning * `;
@@ -21,7 +21,7 @@ const createUser = async (req,res) =>{
                                             first_name,
                                             last_name,
                                             email,
-                                            user_passord])
+                                            user_password])
 
         res.status(200).json( {mensaje: "User successfully created", obj_creado: result});
 
@@ -37,16 +37,16 @@ const auth = async (req, res) =>{
 
     try {
 
-        const {username, user_passord} = req.body;
+        const {username, user_password} = req.body;
     const sql = `select username, first_name, email
                 from tbl_user
                 where username = $1
                 and user_password = $2
-                and active = true`;
+                and active_user = true`;
 
-    const result = await db.query(sql, [username, user_passord]);
+    const result = await db.query(sql, [username, user_password]);
     if(result.length ===0){
-        res.status(404).json({mensaje: "Invalid Credentials"});
+        res.status(400).json({mensaje: "Invalid Credentials"});
     }else{
         res.status(200).json({mensaje: "Authentication Successful", info_user:result })
     }
