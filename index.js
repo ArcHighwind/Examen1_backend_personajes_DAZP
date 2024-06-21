@@ -4,22 +4,20 @@ import {personaje} from './routes/apiPersonaje.js'
 import {Pclass} from './routes/apiClass.js'
 import {power} from './routes/apiPower.js'
 import { info } from './routes/apiInfo.js';
+import { user } from './routes/apiUser.js';
 import cors from 'cors';
 
 
 const app = express();
 app.use(express.json());
 
-//const corsOptions = {
-//    origin : "http://localhost:5173",
-//   methods: "GET, POST",
-//    preflightContinue: false,
-//    optionsSucessStatus: 204
-//}
-
 app.use(cors())
 
 const port = 3000;
+
+//user agregado para el segundo examen
+app.use('/api/user', user);
+
 
 app.use('/api/personaje', personaje);
 app.use('/api/power', power);

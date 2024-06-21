@@ -45,17 +45,14 @@ INNER JOIN tbl_personalinfo
 ON tbl_personaje.id_info = tbl_personalinfo.id; 
 
 
-INSERT INTO tbl_power (power_name)
-VALUES ('regeneration');
-
-INSERT INTO tbl_class (class_name)
-VALUES ('warrior');
-
-INSERT INTO tbl_weapon (weapon_type)
-VALUES ('guns');
-
-INSERT INTO tbl_personalinfo (personalinfo)
-VALUES ('A supersoldier with increased metabolic regeneration');
-
-INSERT INTO tbl_personaje (pname, p_age)
-VALUES ('Winter Soldier', 32);
+--Esta parte es para el segundo examen, ya que tengo que autenticar que ingresen los usuarios. 
+create Table tbl_user
+(
+    username varchar (20) primary key,
+    first_name varchar(255),
+    last_name varchar(255),
+    email varchar(100),
+    user_passord varchar(30),
+    creation_date Timestamp default current_timestamp,
+    active_user bool default true
+)
