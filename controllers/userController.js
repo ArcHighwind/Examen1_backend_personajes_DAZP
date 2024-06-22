@@ -1,8 +1,8 @@
 //agregado para el segundo examen
 import { db } from "../db/conn.js";
+import jwt from 'jsonwebtoken';
 
 const createUser = async (req,res) =>{
-
 
     try {
         const { username, 
@@ -48,7 +48,11 @@ const auth = async (req, res) =>{
     if(result.length ===0){
         res.status(400).json({mensaje: "Invalid Credentials"});
     }else{
-        res.status(200).json({mensaje: "Authentication Successful", info_user:result })
+
+        const payload = result[0];
+        const token = jwt.sign (payload, 'secret', {expiresIn: '1h'})
+
+        res.status(200).json({mensaje: "Authentication Successful", info_user: token })
     }
         
     } catch (err) {

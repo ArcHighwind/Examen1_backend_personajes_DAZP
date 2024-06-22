@@ -61,3 +61,5 @@ SELECT * FROM tbl_user;
 
 ALTER Table tbl_user
 RENAME COLUMN user_passord TO user_password;
+
+CREATE Table
